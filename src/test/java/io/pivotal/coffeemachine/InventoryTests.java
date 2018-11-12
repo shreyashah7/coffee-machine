@@ -1,5 +1,7 @@
 package io.pivotal.coffeemachine;
 
+import io.pivotal.coffeemachine.exception.InsufficientStockException;
+import io.pivotal.coffeemachine.exception.NoSuchIngredientException;
 import java.util.Map;
 
 import org.junit.Test;
@@ -24,7 +26,7 @@ public abstract class InventoryTests {
 	}
 
 	@Test
-	public void deductShouldReduceQuantity() {
+	public void deductShouldReduceQuantity() throws NoSuchIngredientException, InsufficientStockException {
 		Inventory inventory = getInventory();
 		inventory.deduct("coffee", 2);
 		Map<String, Integer> ingredients = inventory.getIngredients();
